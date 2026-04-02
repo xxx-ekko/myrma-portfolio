@@ -55,7 +55,7 @@ const Presentation = () => {
               </Typography>
 
               <Typography variant="body1" sx={{ mb: 3, color: 'text.secondary', fontSize: '1.1rem', lineHeight: 1.8 }}>
-                Myrma Design est une entreprise d'architecture d'intérieur créée par deux architectes passionnées par la transformation des espaces. Fondée au printemps 2026, notre agence est dédiée à la création d'espaces élégants, fonctionnels et confortables.
+                Myrma Design est une entreprise d'architecture d'intérieur créée par deux architectes passionnées par la transformation des espaces. Fondée en Mars 2026, notre agence est dédiée à la création d'espaces élégants, fonctionnels et confortables.
               </Typography>
 
               <Typography variant="body1" sx={{ color: 'text.secondary', fontSize: '1.1rem', lineHeight: 1.8 }}>

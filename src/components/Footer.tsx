@@ -1,10 +1,16 @@
-import { Box, Container, Typography, Grid, IconButton, Divider } from '@mui/material';
+import { Box, Container, Typography, Grid, IconButton, Divider, SvgIcon, type SvgIconProps } from '@mui/material';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import PinterestIcon from '@mui/icons-material/Pinterest';
 import EmailIcon from '@mui/icons-material/Email';
 import LogoMyrma from './LogoMyrma';
 
-// 1. ON DÉFINIT NOS LIENS COMME DANS LA NAVBAR
+// NOUVEAU : Création de l'icône TikTok personnalisée en SVG pur
+const TikTokIcon = (props: SvgIconProps) => (
+  <SvgIcon {...props} viewBox="0 0 448 512">
+    <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z" />
+  </SvgIcon>
+);
+
+// ON DÉFINIT NOS LIENS COMME DANS LA NAVBAR
 const footerLinks = [
   { label: 'Accueil', id: 'accueil' },
   { label: 'Le Studio', id: 'studio' },
@@ -14,7 +20,7 @@ const footerLinks = [
 
 const Footer = () => {
   
-  // 2. LA FONCTION DE SCROLL
+  // LA FONCTION DE SCROLL
   const handleScrollTo = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -42,25 +48,23 @@ const Footer = () => {
           <Box sx={{ width: '40px', height: '2px', backgroundColor: 'primary.main', mx: 'auto' }} />
         </Box>
 
+        {/* J'ai bien refermé et structuré le Grid container ici ! */}
         <Grid container spacing={6} sx={{ mb: 8 }}>
-          
+        
           <Grid size={{ xs: 12, md: 4 }}>
-            {/* Au clic sur le logo du footer, on remonte tout en haut */}
-            <Box onClick={() => handleScrollTo('accueil')} sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 3, cursor: 'pointer' }}>
-              <LogoMyrma sx={{ fontSize: 40, color: '#ffffff' }} />
-              <Typography variant="h6" sx={{ fontFamily: '"Playfair Display", serif', fontWeight: 600, letterSpacing: '0.1em' }}>
-                MYRMA
-              </Typography>
+            {/* LOGO (Version Image PNG) */}
+            <Box onClick={() => handleScrollTo('accueil')} sx={{ display: 'flex', alignItems: 'center', mb: 3, cursor: 'pointer' }}>
+              <LogoMyrma sx={{ height: 80 }} /> {/* Plus grand dans le Footer */}
             </Box>
             <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.7)', mb: 1 }}>Studio d'Architecture d'Intérieur</Typography>
             <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.7)', mb: 3 }}>Dakar, Sénégal</Typography>
-            <Typography variant="body2" sx={{ color: 'primary.main', fontWeight: 500 }}>contact@myrmadesign.com</Typography>
+            <Typography variant="body2" sx={{ color: 'primary.main', fontWeight: 500 }}>myrmadesign@gmail.com</Typography>
           </Grid>
 
           <Grid size={{ xs: 12, md: 4 }}>
             <Typography variant="h6" sx={{ mb: 3, fontFamily: '"Playfair Display", serif' }}>Navigation</Typography>
             
-            {/* 3. ON UTILISE NOTRE LISTE DE LIENS AVEC LE ONCLICK */}
+            {/* ON UTILISE NOTRE LISTE DE LIENS AVEC LE ONCLICK */}
             {footerLinks.map((item) => (
               <Typography 
                 key={item.id} 
@@ -83,9 +87,18 @@ const Footer = () => {
             <Typography variant="h6" sx={{ mb: 3, fontFamily: '"Playfair Display", serif' }}>Suivez-nous</Typography>
             <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.7)', mb: 3 }}>Découvrez nos inspirations et nos dernières réalisations sur nos réseaux.</Typography>
             <Box sx={{ display: 'flex', gap: 2 }}>
-              <IconButton sx={{ color: '#ffffff', border: '1px solid rgba(255,255,255,0.2)', '&:hover': { backgroundColor: 'primary.main', borderColor: 'primary.main' } }}><InstagramIcon /></IconButton>
-              <IconButton sx={{ color: '#ffffff', border: '1px solid rgba(255,255,255,0.2)', '&:hover': { backgroundColor: 'primary.main', borderColor: 'primary.main' } }}><PinterestIcon /></IconButton>
-              <IconButton href="mailto:contact@myrmadesign.com" sx={{ color: '#ffffff', border: '1px solid rgba(255,255,255,0.2)', '&:hover': { backgroundColor: 'primary.main', borderColor: 'primary.main' } }}><EmailIcon /></IconButton>
+              <IconButton href='https://www.instagram.com/myrmadesign/' sx={{ color: '#ffffff', border: '1px solid rgba(255,255,255,0.2)', '&:hover': { backgroundColor: 'primary.main', borderColor: 'primary.main' } }}>
+                <InstagramIcon />
+              </IconButton>
+              
+              {/* NOUVEAU : On intègre notre icône TikTok juste ici */}
+              <IconButton href='https://www.tiktok.com/@myrmadesign' sx={{ color: '#ffffff', border: '1px solid rgba(255,255,255,0.2)', '&:hover': { backgroundColor: 'primary.main', borderColor: 'primary.main' } }}>
+                <TikTokIcon />
+              </IconButton>
+              
+              <IconButton href="mailto:myrmadesign@gmail.com" sx={{ color: '#ffffff', border: '1px solid rgba(255,255,255,0.2)', '&:hover': { backgroundColor: 'primary.main', borderColor: 'primary.main' } }}>
+                <EmailIcon />
+              </IconButton>
             </Box>
           </Grid>
 

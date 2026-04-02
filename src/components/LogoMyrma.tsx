@@ -1,29 +1,21 @@
-import { SvgIcon, type SvgIconProps } from '@mui/material';
+import { Box, type BoxProps } from '@mui/material';
+// On importe notre nouvelle image ! 
+import logoImg from '../assets/logo_gold.png';
 
-const LogoMyrma = (props: SvgIconProps) => {
+// On utilise BoxProps pour pouvoir lui passer des styles (sx) depuis la Navbar ou le Footer
+const LogoMyrma = (props: BoxProps) => {
   return (
-    <SvgIcon viewBox="0 0 100 100" {...props}>
-      <g fill="currentColor">
-        {/* Pilier gauche : rapproché du centre (décalé vers la droite) */}
-        <polygon points="14,15 24,30 24,85 14,85" />
-        
-        {/* Pilier droit : rapproché du centre (décalé vers la gauche) */}
-        <polygon points="86,15 76,30 76,85 86,85" />
-        
-        {/* Le 'Y' central reste parfaitement au milieu */}
-        <polygon points="
-          26,15 
-          36,15 
-          50,36 
-          64,15 
-          74,15 
-          55,43.5 
-          55,85 
-          45,85 
-          45,43.5
-        " />
-      </g>
-    </SvgIcon>
+    <Box
+      component="img"
+      src={logoImg}
+      alt="Myrma Design"
+      {...props} // On injecte les propriétés reçues (très important pour la taille)
+      sx={{
+        // On s'assure que l'image garde toujours ses proportions
+        objectFit: 'contain',
+        ...props.sx 
+      }}
+    />
   );
 };
 

@@ -42,7 +42,7 @@ const Portfolio = () => {
       : portfolioData.filter((item) => item.category === selectedCategory);
 
   return (
-    <Box id="portfolio" sx={{ py: { xs: 8, md: 12 }, backgroundColor: "#F5F2EB", minHeight: '100vh' }}>
+    <Box id="portfolio" sx={{ pt: { xs: 16, md: 20 }, pb: { xs: 8, md: 12 }, backgroundColor: "#F5F2EB", minHeight: '100vh' }}>
       <Container maxWidth="xl">
         
         {/* EN-TÊTE */}
@@ -59,24 +59,26 @@ const Portfolio = () => {
         {/* FILTRES DYNAMIQUES */}
         <Box sx={{ display: "flex", justifyContent: { xs: "flex-start", md: "center" }, gap: 2, mb: 6, overflowX: "auto", pb: 2, "&::-webkit-scrollbar": { height: "4px" }, "&::-webkit-scrollbar-thumb": { backgroundColor: "#C5A059", borderRadius: "4px" }}}>
           {portfolioCategories.map((category) => (
-            <Button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              sx={{
-                whiteSpace: "nowrap",
-                fontFamily: '"Montserrat", sans-serif',
-                color: selectedCategory === category ? "#ffffff" : "#231F1C",
-                backgroundColor: selectedCategory === category ? "#C5A059" : "transparent",
-                border: `1px solid ${selectedCategory === category ? "#C5A059" : "#231F1C"}`,
-                borderRadius: "30px",
-                px: 3,
-                py: 1,
-                transition: "all 0.3s ease",
-                "&:hover": { backgroundColor: selectedCategory === category ? "#C5A059" : "rgba(35, 31, 28, 0.05)" },
-              }}
-            >
-              {category}
-            </Button>
+<Button
+  key={category}
+  onClick={() => setSelectedCategory(category)}
+  sx={{
+    whiteSpace: "nowrap",
+    minWidth: "max-content", /* <-- THE FIX: Prevents the capsule from crushing the text */
+    fontSize: { xs: '0.75rem', md: '0.875rem' }, /* <-- Slightly smaller text on mobile */
+    px: { xs: 2.5, md: 3 }, /* <-- Slightly less side padding on mobile */
+    py: { xs: 0.8, md: 1 },
+    fontFamily: '"Montserrat", sans-serif',
+    color: selectedCategory === category ? "#ffffff" : "#231F1C",
+    backgroundColor: selectedCategory === category ? "#C5A059" : "transparent",
+    border: `1px solid ${selectedCategory === category ? "#C5A059" : "#231F1C"}`,
+    borderRadius: "30px",
+    transition: "all 0.3s ease",
+    "&:hover": { backgroundColor: selectedCategory === category ? "#C5A059" : "rgba(35, 31, 28, 0.05)" },
+  }}
+>
+  {category}
+</Button>
           ))}
         </Box>
 

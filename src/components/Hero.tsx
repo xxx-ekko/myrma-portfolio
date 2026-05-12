@@ -2,8 +2,8 @@ import { Box, Typography, Button, Container, } from '@mui/material';
 import { motion, type Variants } from 'framer-motion';
 
 // On crée des versions animées de nos composants MUI
-const MotionTypography = motion(Typography);
-const MotionButton = motion(Button);
+const MotionTypography = motion.create(Typography);
+const MotionButton = motion.create(Button);
 
 const Hero = () => {
 // --- CHORÉGRAPHIE FRAMER MOTION ---

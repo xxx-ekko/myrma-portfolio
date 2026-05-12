@@ -1,7 +1,7 @@
 import { Box, Container, Typography, Grid } from '@mui/material';
 import { motion, type Variants } from 'framer-motion';
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 // On a retiré MotionTypography ici car on ne l'utilise pas !
 
 const Presentation = () => {

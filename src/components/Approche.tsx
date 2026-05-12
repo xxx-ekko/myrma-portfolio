@@ -1,7 +1,7 @@
 import { Box, Container, Typography, Grid } from '@mui/material';
 import { motion, type Variants } from 'framer-motion';
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 // Les 4 étapes tirées du PDF
 const stepsData = [
